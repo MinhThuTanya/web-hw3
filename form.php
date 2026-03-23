@@ -98,12 +98,12 @@
             <?php endif; ?>
         </div>
 
-        <button type="submit">💾 Сохранить</button>
+        <button type="submit">Сохранить</button>
     </form>
 
     <div class="footer-links">
-        <a href="podgotovka.php">📖 Этапы выполнения</a>
-        <a href="view.php">📊 Просмотр анкет</a>
+        <a href="podgotovka.php">Этапы выполнения</a>
+        <a href="view.php">Просмотр анкет</a>
     </div>
 </div>
 </body>

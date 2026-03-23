@@ -59,7 +59,7 @@
     </section>
 
     <div class="footer-links">
-        <a href="form.php">← Вернуться к форме</a>
+        <a href="index.php">← Вернуться к форме</a>
     </div>
 </div>
 </body>
