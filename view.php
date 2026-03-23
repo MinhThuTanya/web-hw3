@@ -1,6 +1,7 @@
 <?php
+
 $db_user = 'u82323';
-$db_pass = '4417439';
+$db_pass = '4417439';   
 $db_name = 'u82323';
 
 try {
@@ -21,44 +22,89 @@ try {
 }
 ?>
 <!DOCTYPE html>
-<html>
+<html lang="ru">
 <head>
-    <title>Сохранённые анкеты</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Сохранённые анкеты | Лабораторная работа №3</title>
+    <link rel="stylesheet" href="style.css">
     <style>
-        table { border-collapse: collapse; width: 100%; }
-        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
-        th { background-color: #f2f2f2; }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #ffe0b5;
+            padding: 10px;
+            text-align: left;
+            vertical-align: top;
+        }
+        th {
+            background-color: #fff0e0;
+            color: #e67e22;
+        }
+        tr:hover {
+            background-color: #fff9ef;
+        }
+        .back-link {
+            text-align: center;
+            margin-top: 30px;
+        }
+        .back-link a {
+            background: #f39c12;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .back-link a:hover {
+            background: #e67e22;
+        }
     </style>
 </head>
 <body>
-    <h1>Сохранённые анкеты</h1>
+<div class="container">
+    <h1>📊 Сохранённые анкеты</h1>
+    <p>Всего записей: <?= count($applications) ?></p>
+
     <table>
-        <tr>
-            <th>ID</th>
-            <th>ФИО</th>
-            <th>Телефон</th>
-            <th>Email</th>
-            <th>Дата рождения</th>
-            <th>Пол</th>
-            <th>Биография</th>
-            <th>Согласие</th>
-            <th>Языки</th>
-            <th>Дата создания</th>
-        </tr>
-        <?php foreach ($applications as $app): ?>
-        <tr>
-            <td><?= htmlspecialchars($app['id']) ?></td>
-            <td><?= htmlspecialchars($app['full_name']) ?></td>
-            <td><?= htmlspecialchars($app['phone']) ?></td>
-            <td><?= htmlspecialchars($app['email']) ?></td>
-            <td><?= htmlspecialchars($app['birth_date']) ?></td>
-            <td><?= htmlspecialchars($app['gender']) ?></td>
-            <td><?= nl2br(htmlspecialchars($app['biography'])) ?></td>
-            <td><?= $app['contract_accepted'] ? 'Да' : 'Нет' ?></td>
-            <td><?= htmlspecialchars($app['languages']) ?></td>
-            <td><?= htmlspecialchars($app['created_at']) ?></td>
-        </tr>
-        <?php endforeach; ?>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>ФИО</th>
+                <th>Телефон</th>
+                <th>Email</th>
+                <th>Дата рождения</th>
+                <th>Пол</th>
+                <th>Биография</th>
+                <th>Согласие</th>
+                <th>Языки</th>
+                <th>Дата создания</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($applications as $app): ?>
+                <tr>
+                    <td><?= htmlspecialchars($app['id']) ?></td>
+                    <td><?= htmlspecialchars($app['full_name']) ?></td>
+                    <td><?= htmlspecialchars($app['phone']) ?></td>
+                    <td><?= htmlspecialchars($app['email']) ?></td>
+                    <td><?= htmlspecialchars($app['birth_date']) ?></td>
+                    <td><?= $app['gender'] === 'male' ? 'Мужской' : 'Женский' ?></td>
+                    <td><?= nl2br(htmlspecialchars($app['biography'])) ?></td>
+                    <td><?= $app['contract_accepted'] ? '✅ Да' : '❌ Нет' ?></td>
+                    <td><?= htmlspecialchars($app['languages']) ?></td>
+                    <td><?= htmlspecialchars($app['created_at']) ?></td>
+                </tr>
+            <?php endforeach; ?>
+        </tbody>
     </table>
+
+    <div class="back-link">
+        <a href="form.php">← Вернуться к форме</a>
+    </div>
+</div>
 </body>
 </html>
